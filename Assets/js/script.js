@@ -1,3 +1,11 @@
+// Password content variables/arrays
+var numeric = [0,1,2,3,4,5,6,7,8,9];
+var lower = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var upper = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+var special = ["!","@","#","$","%","^","&","*","(",")","_","+","~","`","|","}","{","[","]","\\",":",";","?",">","<",",",".","/","-","="];
+
+console.log(numeric, lower, upper, special);
+
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
@@ -84,7 +92,7 @@ function writePassword() {
   var password = generatePassword();
     var numeric = "0123456789";
     var string = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    var speical = "!@#$%^&*()_+~`|}{[]\:;?><,./-=";
+    var special = "!@#$%^&*()_+~`|}{[]\:;?><,./-=";
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
