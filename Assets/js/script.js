@@ -2,8 +2,8 @@
 var generateBtn = document.querySelector("#generate");
 
 // Function that has prompts asking about password length and validates user input to be a number between 8 and 128.
-var setPassLength = function(){
 
+var setPassLength = function(){
   passLength = window.prompt("How long should your password be? Please enter a number equal to OR between 8 and 128", "Type your password length here");
 
   if (passLength >= 8 && passLength <= 128){
@@ -21,13 +21,61 @@ var setPassLength = function(){
     window.alert("Please enter a valid number between 8 and 128!");
     setPassLength();
   }
-}
+};
+
+// Allow the user to confirm or cancel the option to include UPPERCASE values in the generated password
+
+var setPassUpper = function(){
+  passUpper = window.confirm("Would you like to include UPPERCASE characters in your password? Select 'OK' for YES, or 'Cancel' for NO.");
+
+  console.log(passUpper);
+
+  if (passUpper === true){
+    return true;
+  }
+  else{
+    return false;
+  };
+};
+
+// Allow the user to confirm or cancel the option to include lowercase values in the generated password
+
+var setPassLower = function(){
+  passLower = window.confirm("Would you like to include lowercase characters in your password? Select 'OK' for YES, or 'Cancel' for NO.");
+
+  console.log(passLower);
+
+  if (passLower === true){
+    return true;
+  }
+  else{
+    return false;
+  };
+};
+
+// Allow the user to confirm or cancel the option to include NUMERIC values in the generated password
+
+var setPassNum = function(){
+  passNum = window.confirm("Would you like to include NUMBERS in your password? Select 'OK' for YES, or 'Cancel' for NO.");
+
+  console.log(passNum);
+
+  if(passNum === true){
+    return true;
+  }
+  else{
+    return false;
+  };
+};
 
 
 
 // Write password to the #password input
 function writePassword() {
   setPassLength();
+  setPassUpper();
+  setPassLower();
+  setPassNum();
   
     
 
