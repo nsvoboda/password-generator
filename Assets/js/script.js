@@ -23,39 +23,50 @@ console.log(numeric, lower, upper, special);
   // }
   
   
-  function setPassword(){
-    var passLength = window.prompt("How long should your password be? Please enter a number equal to OR between 8 and 128", "Type your password length here");
-    
-    if (passLength >= 8 && passLength <= 128){
-      window.alert("Your password will be " + passLength + " characters long!");
-    }
-    else if (passLength < 8 || passLength > 128){
+function setPassword(){
+  var passLength = window.prompt("How long should your password be? Please enter a number equal to OR between 8 and 128", "Type your password length here");
+  
+  if (passLength >= 8 && passLength <= 128){
+    window.alert("Your password will be " + passLength + " characters long!");
+  }
+  else if (passLength < 8 || passLength > 128){
     window.alert("The number you have entered is not within the valid range of 8 to 128, please try again!");
-    setPassLength();
+    setPassword();
   }
   else if (isNaN(!passLength)){
     window.alert("Please enter a valid number between 8 and 128!");
-    setPassLength();
+    setPassword();
+  }
+  else if (passLength === ""){
+    window.alert("Please enter a valid number between 8 and 128!");
+    setPassword();
   }
   else{
     window.alert("Please enter a valid number between 8 and 128!");
-    setPassLength();
+    setPassword();
   }
-  
+
   var confirmLower = confirm("Would you like to include lowercase characters in your password? Select 'OK' for YES, or 'Cancel' for NO.");
   var confirmUpper = confirm("Would you like to include UPPERCASE characters in your password? Select 'OK' for YES, or 'Cancel' for NO.");
   var confirmNumeric = confirm("Would you like to include NUMBERS in your password? Select 'OK' for YES, or 'Cancel' for NO.")
   var confirmSpecial = confirm("Would you like to include special characters in your password? Select 'OK' for YES, or 'Cancel' for NO.")
-  
-  // an objet to store the user responses
-  var storageObject = {
-    passLength: passLength,
-    confirmLower: confirmLower,
-    confirmUpper: confirmUpper,
-    confirmNumeric: confirmNumeric,
-    confirmSpecial: confirmSpecial
-  };
-  return storageObject;
+
+  if (confirmLower === false && confirmUpper === false && confirmNumeric === false && confirmSpecial === false){
+    window.alert("You must choose at least one character type for your password. Please try again!");
+    setPassword();
+  }
+  else {
+
+    // an objet to store the user responses
+    var storageObject = {
+      passLength: passLength,
+      confirmLower: confirmLower,
+      confirmUpper: confirmUpper,
+      confirmNumeric: confirmNumeric,
+      confirmSpecial: confirmSpecial
+    };
+    return storageObject;
+  }
 };
 
 function randomGenerator(array){
@@ -72,6 +83,7 @@ function generatePassword() {
   var confirmedThings = [];
   // going to use .push() and .concat() methods to push characters into these empty arrays
   // a conditional to concat and push if user has chosen given criteria
+  
   if (answers.confirmLower){
     possibleThings = possibleThings.concat(lower);
     confirmedThings.push(randomGenerator(lower));
