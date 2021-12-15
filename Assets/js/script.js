@@ -67,29 +67,32 @@ function randomGenerator(array){
 
 function generatePassword() {
   var answers = setPassword();
-  var final = []
-  var possibleThings = []
-  var confirmedThings = []
+  var final = [];
+  var possibleThings = [];
+  var confirmedThings = [];
   // going to use .push() and .concat() methods to push characters into these empty arrays
   // a conditional to concat and push if user has chosen given criteria
   if (answers.confirmLower){
     possibleThings = possibleThings.concat(lower);
     confirmedThings.push(randomGenerator(lower));
   }
-  // do this if for the rest, so lower, upper, etc
+  
   if (answers.confirmUpper){
     possibleThings = possibleThings.concat(upper);
     confirmedThings.push(randomGenerator(upper));
   }
+
   if (answers.confirmNumeric){
     possibleThings = possibleThings.concat(numeric);
     confirmedThings.push(randomGenerator(numeric));
   }
+
   if (answers.confirmSpecial){
     possibleThings = possibleThings.concat(special);
     confirmedThings.push(randomGenerator(special));
   }
-  for(var i = 0 ; i < answers.passLength; i++) {
+
+  for(var i = 0; i < answers.passLength; i++) {
     var possibleThings = randomGenerator(possibleThings);
     final.push(possibleThings)
   }
