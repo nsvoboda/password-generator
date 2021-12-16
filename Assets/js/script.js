@@ -73,6 +73,7 @@ function randomGenerator(array){
   //Math.floor(Math.random() * passLength) 
   var randomInd = Math.floor(Math.random() * array.length);
   var randomEl = array[randomInd];
+  console.log(randomEl);
   return randomEl;
 };
 
@@ -106,12 +107,14 @@ function generatePassword() {
 
   for(var i = 0; i < answers.passLength; i++) {
     var possibleThings = randomGenerator(possibleThings);
-    final.push(possibleThings)
+    final.push(possibleThings);
   }
 
   for (var i = 0; i < confirmedThings.length; i++){
     final[i] = confirmedThings[i]
   }
+
+  console.log(possibleThings);
 
   // answer is supposed to be in a string
   return final.join('')
